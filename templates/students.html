@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>Student Registration</title>
+</head>
+
+<body>
+
+    <h1>Student Registration</h1>
+
+    <form method="POST">
+
+        <label>Student Name</label><br>
+        <input type="text" name="name" placeholder="Enter student name" required><br><br>
+
+        <label>Register Number</label><br>
+        <input type="text" name="register_no" placeholder="Enter register number" required><br><br>
+
+        <label>Department</label><br>
+        <input type="text" name="department" placeholder="Enter department" required><br><br>
+
+        <label>Year</label><br>
+        <select name="year" required>
+            <option value="">Select Year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select><br><br>
+
+        <label>Room</label><br>
+<select name="room" required>
+
+    <option value="">Select Available Room</option>
+
+    {% for r in rooms %}
+
+        {% if r["occupied"] < r["capacity"] %}
+
+            <option value="{{ r['room'] }}">
+                Room {{ r["room"] }} - {{ r["capacity"] - r["occupied"] }} Beds Available
+            </option>
+
+        {% endif %}
+
+    {% endfor %}
+
+</select><br><br>
+        <label>Phone Number</label><br>
+        <input type="text" name="phone" placeholder="Enter phone number" required><br><br>
+
+        <button type="submit">Add Student</button>
+
+    </form>
+
+    <br>
+    <a href="/">← Back to Home</a>
+
+</body>
+</html>
